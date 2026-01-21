@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhận diện Rau Củ Quả</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .upload-box {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            width: 400px;
+            background: #fff;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        img {
+            margin-top: 15px;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🍎 Nhận diện Rau Củ Quả 🍌</h1>
+    
+    <div class="upload-box">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <button type="submit" class="btn">Tải lên & Dự đoán</button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="result">
+        <h2>Kết quả dự đoán: <span style="color:#e74c3c">{{ result }}</span></h2>
+        <p>Độ tin cậy: <b>{{ confidence }}%</b></p>
+        {% if image %}
+            <img src="{{ image }}" alt="Ảnh đã upload">
+        {% endif %}
+    </div>
+    {% endif %}
+
+</body>
+</html>
